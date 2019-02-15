@@ -28,7 +28,7 @@
 
 
     <dependencies>
-        <!-- API do CDI -->
+        <!-- API do CDI  https://mvnrepository.com/artifact/javax.enterprise/cdi-api/2.0 -->
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
@@ -44,6 +44,20 @@
         <scope>provided</scope>
     </dependency>
 
+    <!--  JSF -->
+    <dependency>
+        <groupId>org.apache.myfaces.core</groupId>
+        <artifactId>myfaces-api</artifactId>
+        <version>2.3.3</version>
+        <scope>provided</scope>
+    </dependency>
+
+    <!--  Primefaces https://www.primefaces.org/showcase/getstarted.xhtml -->
+    <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>6.2</version>
+    </dependency>
 
     </dependencies>
 

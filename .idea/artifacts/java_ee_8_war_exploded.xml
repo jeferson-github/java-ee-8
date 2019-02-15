@@ -6,6 +6,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="java-ee-8" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:6.2" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/java-ee-8-0.1/META-INF/MANIFEST.MF" />
