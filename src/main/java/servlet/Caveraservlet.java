@@ -32,11 +32,13 @@ public class Caveraservlet extends HttpServlet {
 
         resp.getWriter().append(" ApplicationBean: " + applicationBean.getCont());
         resp.getWriter().append(" SessionBean: " + sessionBean.getCont());
-        resp.getWriter().append(" RequestBean: " + requestBean.getCont());
+        //resp.getWriter().append(" RequestBean: " + requestBean.getCont());
+        resp.getWriter().append(" RequestBean: " + requestBean.getContador());
 
         System.out.println(" ApplicationBean: " + applicationBean.getCont());
         System.out.println(" SessionBean: " + sessionBean.getCont());
-        System.out.println(" RequestBean: " + requestBean.getCont());
+        //System.out.println(" RequestBean: " + requestBean.getCont());
+        System.out.println(" RequestBean: " + requestBean.getContador());
 
     }
 

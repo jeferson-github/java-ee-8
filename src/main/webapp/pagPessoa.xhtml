@@ -25,10 +25,10 @@
 
                 <h:panelGrid id="nome-endereco" columns="2" cellpadding="5">
                     <h:outputLabel for="name" value="Nome:" />
-                    <p:inputText id="name" value="#{pessoaController.nome}" />
+                    <p:inputText id="name" value="#{pessoaController1.nome}" />
 
                     <h:outputLabel for="endereco" value="Endereco:" />
-                    <p:inputText id="endereco" value="#{pessoaController.endereco}" />
+                    <p:inputText id="endereco" value="#{pessoaController1.endereco}" />
 
                     <!-- For testing, don't remove!
                     <p:outputLabel for="@next" value="Label which considers @NotNull:" />
@@ -53,7 +53,7 @@
 
                 <h:panelGrid id="sexo" columns="2" style="margin-bottom:10px" cellpadding="5">
                     <p:outputLabel for="sexo2" value="Sexo:" />
-                    <p:selectOneRadio id="sexo2" value="#{pessoaController.sexo}" unselectable="true">
+                    <p:selectOneRadio id="sexo2" value="#{pessoaController1.sexo}" unselectable="true">
                         <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
                         <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
                         <f:selectItem itemLabel="Indefinido" itemValue="Indefinido" />
@@ -62,12 +62,12 @@
 
             </p:panel>
 
-            <p:commandButton value="Cadastrar" action="#{pessoaController.cadastrar}" update="tabelaPessoa nome-endereco sexo" />
-            <p:commandButton value="Limpar" action="#{pessoaController.limpar}" update="panel" />
+            <p:commandButton value="Cadastrar" action="#{pessoaController1.cadastrar}" update="tabelaPessoa nome-endereco sexo" />
+            <p:commandButton value="Limpar" action="#{pessoaController1.limpar}" update="panel" />
 
 
 
-            <p:dataTable id="tabelaPessoa" var="pessoa" value="#{pessoaController.pessoas}">
+            <p:dataTable id="tabelaPessoa" var="pessoa" value="#{pessoaController1.pessoas}">
 
                 <p:column headerText="Nome">
                     <h:outputText value="#{pessoa.nome}" />

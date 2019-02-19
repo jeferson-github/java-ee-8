@@ -6,27 +6,35 @@ import javax.enterprise.context.RequestScoped;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-//padrão é RequestScoped
 @RequestScoped
 public class RequestBean implements Serializable {
-    public static Integer cont = 0;
 
-    public RequestBean(){
+    public static int contador;
 
-        cont++;
+    public static void setContador(int contador) {
+        RequestBean.contador = contador;
     }
-    public String getCont(){
-        return cont.toString();
+
+    public static int getContador() {
+        return contador;
+    }
+
+    public RequestBean() {
+        System.out.println("RequestBean - Construtor: " + LocalDateTime.now());
+        contador++;
+    }
+
+    public String imprimeContador (){
+        return String.valueOf(contador);
     }
 
     @PostConstruct
-    private void init(){
-        System.out.println(" RequestBean foi criada: " + LocalDateTime.now());
+    private void innit (){
+        System.out.println("RequestBean - PostConstruct: " + LocalDateTime.now());
     }
 
     @PreDestroy
-    private void destroy(){
-        System.out.println(" RequestBean foi destruída: " + LocalDateTime.now());
-
+    private void end (){
+        System.out.println("RequestBean - PreDestroy: " + LocalDateTime.now());
     }
 }
