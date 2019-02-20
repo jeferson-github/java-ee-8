@@ -16,21 +16,33 @@ public class PessoaDAO implements Serializable {
     private EntityManager em;
 
     @Transactional
-    public void salvar(Pessoa pessoa){
-        em.persist(pessoa);
+    public void salvar(Pessoa p){
+
+        em.persist(p);
+        System.out.println("Final do método salvar");
+        System.out.println("Final do método salvar");
+        System.out.println("Final do método salvar");
     }
 
-    public List consultar(){
-        return em.createQuery("select p from Pessoa P", Pessoa.class).getResultList();
-
-    }
-/*
-    public void setEm(EntityManager em) {
-        this.em = em;
+    public List<Pessoa> consultar(){
+        return em.createQuery("select p from Pessoa p",Pessoa.class).getResultList();
     }
 
-    public EntityManager getEm() {
-        return em;
+
+    @Transactional
+    public void remover(Pessoa p){
+        //p = em.find(Pessoa.class,p.getId());
+        //p = detached
+
+        p = em.merge(p); //Estágias
+        //p = em.find(Pessoa.class, p.getId()); //Daniel
+
+        //p = managed
+        em.remove(p);
+        //em.flush();
     }
-*/
+
+    private void atualizarTabela(){
+
+    }
 }

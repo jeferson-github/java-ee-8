@@ -31,39 +31,46 @@
     </style>
 
     <h:form>
-        <p:growl id="msgs" showDetail="true"/>
+
+        <p:growl id="growl2" showDetail="false" sticky="true" />
 
         <p:panel id="formularioPessoa" header="Cadastro de Pessoas" style="margin-bottom:40px">
             <h:panelGrid columns="2" cellpadding="2">
 
+                <p:outputLabel value="Id:" for="acId"/>
+                <p:inputText id="acId" value="#{pessoaController.pessoaForm.id}" disabled="true" readonly="true" />
+
                 <p:outputLabel value="Nome:" for="acNome"/>
-                <p:autoComplete id="acNome" value="#{pessoaController.pessoaForm.nome}"
-                                completeMethod="#{pessoaController.completeNome}"/>
+                <p:inputText id="acNome" value="#{pessoaController.pessoaForm.nome}"
+                                />
 
                 <p:outputLabel value="CPF:" for="acCPF"/>
-                <p:autoComplete id="acCPF" value="#{pessoaController.pessoaForm.cpf}"
-                                completeMethod="#{pessoaController.completeCPF}"/>
+                <p:inputText id="acCPF" value="#{pessoaController.pessoaForm.cpf}"
+                                />
 
                 <p:outputLabel value="Endereço:" for="acEndereco"/>
-                <p:autoComplete id="acEndereco" value="#{pessoaController.pessoaForm.endereco}"
-                                completeMethod="#{pessoaController.completeEndereco}"/>
+                <p:inputText id="acEndereco" value="#{pessoaController.pessoaForm.endereco}"
+                                />
 
                 <p:outputLabel value="Telefone:" for="acTelefone"/>
-                <p:autoComplete id="acTelefone" value="#{pessoaController.pessoaForm.telefone}"
-                                completeMethod="#{pessoaController.completeTelefone}"/>
+                <p:inputText id="acTelefone" value="#{pessoaController.pessoaForm.telefone}"
+                                />
+
             </h:panelGrid>
         </p:panel>
 
+        <!--
         <p:growl id="growl" life="2000"/>
-        <p:commandButton value="Cadastrar" id="withIcon" action="#{pessoaController.cadastrar}" update="tabelaPessoa formularioPessoa"
+        -->
+        <p:commandButton value="Cadastrar" id="withIcon" action="#{pessoaController.cadastrar}" update="@form"
                          style="margin-right:20px;" icon="pi pi-save"/>
 
         <p:commandButton value="Limpar" id="withIcon2" action="#{pessoaController.limpar}" update="@form"
-                         style="margin-right:20px;" icon="pi pi-save"/>
+                         style="margin-right:20px;" icon="pi pi-save" immediate="true" process="@this"/>
 
 
         <p:commandButton value="Exluir" id="withIcon3" action="#{pessoaController.excluir}" update="@form"
-                         style="margin-right:20px;" icon="pi pi-save"/>
+                         style="margin-right:20px;" icon="pi pi-save" immediate="true"/>
 
         <br/>
         <br/>
@@ -86,6 +93,12 @@
 
             <p:column headerText="Telefone">
                 <h:outputText value="#{pessoa.telefone}"/>
+            </p:column>
+
+            <p:column headerText="Data de Criação">
+                <h:outputText value="#{pessoa.dataDeCriacao}">
+                    <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" type="localDateTime" />
+                </h:outputText>
             </p:column>
         </p:dataTable>
 

@@ -5,13 +5,15 @@ import repositorio.PessoaDAO;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@SessionScoped
+//@SessionScoped
+@ViewScoped
 @Named
 public class PessoaController implements Serializable {
     private Pessoa pessoaForm;
@@ -24,7 +26,7 @@ public class PessoaController implements Serializable {
     @PostConstruct
     private void innit (){
         pessoaForm = new Pessoa();
-        pessoas = pessoaDAO.consultar();
+        atualizarTabela();
     }
 
     public void cadastrar(){
@@ -35,7 +37,7 @@ public class PessoaController implements Serializable {
     }
 
     public void atualizarTabela(){
-        
+        pessoas = pessoaDAO.consultar();
     }
 
     public void limpar(){
@@ -43,7 +45,10 @@ public class PessoaController implements Serializable {
     }
 
     public void excluir(){
-        this.pessoas.remove(pessoaForm);
+        //this.pessoas.remove(pessoaForm);
+        pessoaDAO.remover(pessoaForm);
+        limpar();
+        atualizarTabela();
     }
 
     public void aoSelecionar(){

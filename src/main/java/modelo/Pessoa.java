@@ -1,9 +1,7 @@
 package modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -13,18 +11,18 @@ public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty(message = "Digite alguma coisa animal")
     private String nome;
     private String cpf;
     private String endereco;
     private String telefone;
     private LocalDateTime dataDeCriacao;
 
-    public void setDataDeCriacao(LocalDateTime dataDeCriacao) {
-        this.dataDeCriacao = dataDeCriacao;
-    }
-
-    public LocalDateTime getDataDeCriacao() {
-        return dataDeCriacao;
+    @PrePersist
+    @PreUpdate
+    public void preSalvar(){
+        dataDeCriacao = LocalDateTime.now();
     }
 
     @Override
@@ -93,5 +91,21 @@ public class Pessoa implements Serializable {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public void setDataDeCriacao(LocalDateTime dataDeCriacao) {
+        this.dataDeCriacao = dataDeCriacao;
+    }
+
+    public LocalDateTime getDataDeCriacao() {
+        return dataDeCriacao;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
